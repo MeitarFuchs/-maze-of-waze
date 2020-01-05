@@ -135,35 +135,8 @@ class DGraphTest {
 			fail(); 
 		}
 	
-		// check if the remove node remove the edge that was connected to the node we remove
-//		try 
-//		{
-//			Dg.getEdge(node1.getKey(), node2.getKey());
-//			fail();
-//			System.out.println("its good that if its fail!!!");
-//
-//		}
-//		catch (Exception e) 
-//		{;}
-
 		Dg.removeNode(node1.getKey());
-//		try 
-//		{
-//			Dg.getEdge(node0.getKey(), node1.getKey());
-//			fail();
-//			System.out.println("its good that if its fail!!!");
-//
-//		}
-//		catch (Exception e) {;}
-//		try 
-//		{
-//			Dg.getEdge(node1.getKey(), node3.getKey());
-//			fail();
-//			System.out.println("its good that if its fail!!!");
-//
-//		}
-//		catch (Exception e) {;}
-
+		
 		if (Dg.nodeSize()!=2) 
 		{ 
 			fail(); 
@@ -172,22 +145,7 @@ class DGraphTest {
 		{ 
 			fail(); 
 		}
-//		try 
-//		{
-//			Dg.getEdge(node0.getKey(), node1.getKey());
-//			fail();
-//		System.out.println("its good that if its fail!!!");
-//
-//		}
-//		catch (Exception e) {;}
-//		try 
-//		{
-//			Dg.getEdge(node1.getKey(), node3.getKey());
-//			fail();
-//		System.out.println("its good that if its fail!!!");
-//
-//		}
-//		catch (Exception e) {;}
+		
 	}
 
 	@Test

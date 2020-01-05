@@ -2,17 +2,12 @@ package dataStructure;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import javax.swing.RepaintManager;
-
-
 import java.io.Serializable;
 import java.util.Collection;
 
 public class DGraph implements graph, Serializable
 {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	public HashMap  <Integer, node_data> HashMapNode  = new HashMap<Integer, node_data>();
 	public HashMap  <Integer, HashMap<Integer, edge_data>> HashMapEdge  = new HashMap<Integer, HashMap<Integer, edge_data>>();
@@ -79,12 +74,6 @@ public class DGraph implements graph, Serializable
 			System.out.println("the src and dest is the same");
 		}
 
-		//			if (HashMapNode.get(src)==null &&(HashMapNode.get(dest)==null)) 
-		//			{
-		//				node_data s= new NodeData(src);
-		//				addNode(s);
-		//			}
-
 		if (HashMapEdge.get(src)==null)
 		{
 			HashMapEdge.put(src,new HashMap<Integer, edge_data>());
@@ -102,56 +91,24 @@ public class DGraph implements graph, Serializable
 
 		if (!flag)
 			HashMapEdge.get(src).put(dest,originalEd);
-		//		boolean flag=false;
-		//		if (HashMapNode.get(src)==HashMapNode.get(dest)) 
-		//		{
-		//			System.out.println("the src and dest is the same");
-		//		}
-		//		
-		//		if (HashMapNode.get(src)==null) {
-		//			node_data s= new NodeData(src);
-		//			addNode(s);
-		//		}
-		//		if (HashMapNode.get(dest)==null) {
-		//			node_data d= new NodeData(dest);
-		//			addNode(d);
-		//		}
-		//		
-		//		Iterator<edge_data> it = this.getE(src).iterator(); 
-		//		while (it.hasNext()&&flag==false) 
-		//		{
-		//			edge_data ed = it.next();
-		//			if (ed.getDest()==dest) {
-		//				flag = true;
-		//			}
-		//
-		//		}
-		//		if (!flag) {
-		//			edge_data ed=new EdgeData(src,dest,w);
-		//			HashMapEdge.get(src).put(dest, ed);
-		//			this.MC++;
-		//		}
 	}
 
 
 	@Override
-	public Collection<node_data> getV() {
-		//		Collection<node_data> co= (Collection<node_data>) HashMapNode;	
-		//		return co;
+	public Collection<node_data> getV() 
+	{
 		return HashMapNode.values();
-
 	}
 
 	@Override
 	public Collection<edge_data> getE(int node_id)
 	{
-		//		Collection<edge_data> co= (Collection<edge_data>) HashMapEdge.get(node_id);
-		//		return co;
 		if (this.HashMapEdge.get(node_id) == null)
 		{
 			return null;
 		} 
-		else {
+		else 
+		{
 			return HashMapEdge.get(node_id).values();
 		}
 
@@ -163,11 +120,9 @@ public class DGraph implements graph, Serializable
 		node_data tempNd=null;
 		if (HashMapNode.get(key)!=null)
 		{
-			//if (HashMapEdge.get(key)!=null) 
-			//{
 			tempNd=HashMapNode.get(key);
 			HashMapNode.remove(key);
-			//}
+			
 		}
 
 		if (HashMapNode.get(key)==null)
@@ -177,26 +132,17 @@ public class DGraph implements graph, Serializable
 		Iterator<node_data> itN = this.getV().iterator(); 
 		while (itN.hasNext()) 
 		{
-			System.out.println("key  "+ key);
 			node_data nd = itN.next();
 			Iterator<edge_data> itE = this.getE(nd.getKey()).iterator(); 
 			while (itE.hasNext()) 
 			{
 				edge_data ed = itE.next();
-				System.out.println("ed.getdest() "+ed.getDest());
-				System.out.println("key "+ key);
 				if (ed.getDest()==key)
 				{	
-					System.out.println("immmmmmmmm");
 					removeEdge(ed.getSrc(), ed.getDest());
-					System.out.println("immmmmmmmm3333333");
-
 				}
 			}
 		}
-		System.out.println("jjjjjjjjjjjjj");
-		//node_data tempND = new NodeData (HashMapNode.get(key));
-
 		HashMapNode.remove(key);
 		this.MC++;
 
@@ -222,7 +168,8 @@ public class DGraph implements graph, Serializable
 	}
 
 	@Override
-	public int nodeSize() {
+	public int nodeSize() 
+	{
 		int Size = HashMapNode.size(); 
 		return Size;
 	}
@@ -242,19 +189,12 @@ public class DGraph implements graph, Serializable
 				size++;
 			}
 		}
-
 		return size; 
-
 	}
 
 	@Override
-	public int getMC() {	
+	public int getMC()
+	{	
 		return MC;
 	}
-
-	public static void main(String[] args) 
-	{
-
-	}
-
 }

@@ -75,30 +75,12 @@ public class GUI_JFRAME extends JFrame implements ActionListener, MouseListener
 		MenuItem item4 = new MenuItem("Is the graph Conncect?");
 		item4.addActionListener(this);
 
-
 		file.add(item1);
 		file.add(item2);
 		graph_algo.add(item3);
 		graph_algo.add(item4);
 
-
 		this.addMouseListener(this);
-	}
-
-	public node_data getNodeDest(int keyDest) ///maybe to delete the function
-	{
-		boolean flag=false;
-		node_data nd=null;
-		Iterator<node_data> it = this.Dg.getV().iterator(); 
-		while (it.hasNext() && flag==false) 
-		{
-			nd = it.next();
-			if (nd.getKey()==keyDest) {
-				flag = true;
-			}
-
-		}
-		return nd;
 	}
 
 	public void paint(Graphics dg)
@@ -128,9 +110,7 @@ public class GUI_JFRAME extends JFrame implements ActionListener, MouseListener
 						dg.setColor(Color.PINK);
 						Point3D pSrc=new Point3D((int)nd.getLocation().x(), (int)nd.getLocation().y());
 						node_data destNode = Dg.getNode(ed.getDest());
-						//		node_data destNode = getNodeDest(ed.getDest());
 						Point3D pDest= new Point3D((int)destNode.getLocation().x(), (int)destNode.getLocation().y());
-						((Graphics2D) dg).setStroke(new BasicStroke(2, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
 						(dg).drawLine(pSrc.ix(), pSrc.iy(),pDest.ix(), pDest.iy());
 						//write the w edge
 						String wString = "";
@@ -176,23 +156,11 @@ public class GUI_JFRAME extends JFrame implements ActionListener, MouseListener
 			}		
 
 		}
-
-		//		if(str.equals("load from file")) {
-		//			guiAlgoGraph=new Graph_Algo();
-		//			JFileChooser folder=new JFileChooser(FileSystemView.getFileSystemView());
-		//			int s=folder.showOpenDialog(null);
-		//			if(s==JFileChooser.APPROVE_OPTION) {
-		//				guiAlgoGraph.init(folder.getSelectedFile().getAbsolutePath());
-		//				this.Dg=new DGraph(guiAlgoGraph.getG());
-		//				initGUI(Dg);
-		//			}
-		//		}
 		if(str.equals("load from file"))
 		{
 			guiAlgoGraph=new Graph_Algo();
 			JFileChooser folder=new JFileChooser(FileSystemView.getFileSystemView());
-			//			chooser= new JFileChooser(FileSystemView.getFileSystemView());
-			//			chooser.setDialogTitle("Init a graph out FROM file now..."); 
+			
 			int userChoose = folder.showOpenDialog(null);
 			if(userChoose == JFileChooser.APPROVE_OPTION)
 			{
@@ -236,17 +204,6 @@ public class GUI_JFRAME extends JFrame implements ActionListener, MouseListener
 
 	}
 
-	//@Override
-	//		public void mousePressed(MouseEvent e) {
-	//			int x = e.getX();
-	//			int y = e.getY();
-	//			Point3D p = new Point3D(x,y);
-	//			points.add(p);
-	//			repaint();
-	//			System.out.println("mousePressed");
-	//			
-	//		}
-
 	@Override
 	public void mouseReleased(MouseEvent e) 
 	{;	}
@@ -264,57 +221,6 @@ public class GUI_JFRAME extends JFrame implements ActionListener, MouseListener
 	public void mousePressed(MouseEvent arg0) 
 	{;	}
 
-
-	public static void main(String[] args) 
-	{
-		graph Dgraph = new DGraph();
-
-		Point3D p1 = new Point3D(200, 200, 0);
-		Point3D p2 = new Point3D(250, 189, 0);
-		Point3D p3 = new Point3D(167, 470, 0);
-		Point3D p4 = new Point3D(390, 178, 0);
-		Point3D p5 = new Point3D(350, 279, 0);
-		Point3D p6 = new Point3D(278, 590, 0);
-		Point3D p7 = new Point3D(240, 690, 0);
-
-		node_data n1 = new NodeData(1, p1, 9);
-		node_data n2 = new NodeData(2, p2, 10);
-		node_data n3 = new NodeData(3, p3, 11);
-		node_data n4 = new NodeData(4, p4, 12);
-		node_data n5 = new NodeData(5, p5, 13);
-		node_data n6 = new NodeData(6, p6, 14);
-		node_data n7 = new NodeData(7, p7, 15);
-
-		Dgraph.addNode(n1);
-		Dgraph.addNode(n2);
-		Dgraph.addNode(n3);
-		Dgraph.addNode(n4);
-		Dgraph.addNode(n5);
-		Dgraph.addNode(n6);
-
-		Dgraph.connect(n1.getKey(), n2.getKey(), 3.4);
-		Dgraph.connect(n1.getKey(), n5.getKey(), 5);
-		Dgraph.connect(n2.getKey(), n1.getKey(), 5.8);
-		Dgraph.connect(n2.getKey(), n3.getKey(), 4);
-		Dgraph.connect(n3.getKey(), n1.getKey(), 4);
-		Dgraph.connect(n5.getKey(), n3.getKey(), 2.09);
-		Dgraph.connect(n5.getKey(), n1.getKey(), 2.87);
-		Dgraph.connect(n6.getKey(), n4.getKey(), 3.89);
-		Dgraph.connect(n6.getKey(), n2.getKey(), 12);
-
-		GUI_JFRAME GuiG= new GUI_JFRAME(Dgraph);
-		GuiG.setVisible(true);
-
-		Dgraph.removeNode(n4.getKey());
-		GuiG.repaint();
-		//		Dgraph.removeEdge(n5.getKey(), n3.getKey());
-		//		GuiG.repaint();
-		//		Dgraph.addNode(n7);
-		//		GuiG.repaint();
-		//		Dgraph.connect(n7.getKey(),n2.getKey(),20);
-		//		GuiG.repaint();
-
-	}
 
 }
 
