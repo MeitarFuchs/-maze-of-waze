@@ -4,7 +4,6 @@ import java.util.Iterator;
 
 import javax.swing.RepaintManager;
 
-import gui.GUI_JFRAME;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -18,7 +17,6 @@ public class DGraph implements graph, Serializable
 	public HashMap  <Integer, node_data> HashMapNode  = new HashMap<Integer, node_data>();
 	public HashMap  <Integer, HashMap<Integer, edge_data>> HashMapEdge  = new HashMap<Integer, HashMap<Integer, edge_data>>();
 	public  int MC;
-	
 	
 	public DGraph() 
 	{
@@ -68,7 +66,7 @@ public class DGraph implements graph, Serializable
 		HashMapNode.put(n.getKey(), n);
 		HashMapEdge.put(n.getKey(),new HashMap<Integer, edge_data>());
 		this.MC++;
-	//	this.GuiGraph.repaint();
+	
 	}
 
 	@Override
@@ -104,7 +102,6 @@ public class DGraph implements graph, Serializable
 
 		if (!flag)
 			HashMapEdge.get(src).put(dest,originalEd);
-		//this.GuiGraph.repaint();
 		//		boolean flag=false;
 		//		if (HashMapNode.get(src)==HashMapNode.get(dest)) 
 		//		{
@@ -134,7 +131,6 @@ public class DGraph implements graph, Serializable
 		//			HashMapEdge.get(src).put(dest, ed);
 		//			this.MC++;
 		//		}
-		
 	}
 
 
@@ -203,7 +199,7 @@ public class DGraph implements graph, Serializable
 
 		HashMapNode.remove(key);
 		this.MC++;
-//this.GuiGraph.repaint();
+
 		return tempNd;
 	}
 
@@ -222,7 +218,6 @@ public class DGraph implements graph, Serializable
 		{
 			System.out.println("the src doesnt exsit");
 		}
-		//this.GuiGraph.repaint();
 		return ed;
 	}
 
@@ -253,8 +248,7 @@ public class DGraph implements graph, Serializable
 	}
 
 	@Override
-	public int getMC() 
-	{	
+	public int getMC() {	
 		return MC;
 	}
 

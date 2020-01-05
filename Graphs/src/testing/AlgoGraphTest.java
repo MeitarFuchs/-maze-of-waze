@@ -1,5 +1,6 @@
 package testing;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -42,70 +43,70 @@ class AlgoGraphTest
 		Dg.connect(n6.getKey(), n2.getKey(),9);
 		Dg.connect(n6.getKey(), n5.getKey(),10);
 		Dg.connect(n6.getKey(), n4.getKey(),11);
-		Graph_Algo Ag = new Graph_Algo(Dg);
-		//Ag.init(Dg);
+		Graph_Algo Ag = new Graph_Algo();
+		Ag.init(Dg);
 
 		if (Ag.getMyGraph().getNode(n1.getKey()).getKey() != n1.getKey())
 		{fail();};
 
 
 	}
-
-	//	@Test
-	//	public void initFileTest() {
-	//		Graph_Algo Ag = new Graph_Algo();
-	//		DGraph Dg = new DGraph();
-	//
-	//		Point3D p1 = new Point3D(2,5,7);
-	//		Point3D p2 = new Point3D(3,6,8);
-	//		NodeData n1 = new NodeData(1,p1,0);
-	//		NodeData n2 = new NodeData(2,p1,0);
-	//		NodeData n3 = new NodeData(3,p1,0);
-	//		NodeData n4 = new NodeData(4,p2,0);
-	//		NodeData n5 = new NodeData(5,p2,0);
-	//		NodeData n6 = new NodeData(6,p2,0);
-	//
-	//		Dg.addNode(n1);
-	//		Dg.addNode(n2);
-	//		Dg.addNode(n3);
-	//		Dg.addNode(n4);
-	//		Dg.addNode(n5);
-	//		Dg.addNode(n6);
-	//
-	//		Dg.connect(1,2,6);
-	//		Dg.connect(1,3,7);
-	//		Dg.connect(1,4,8);
-	//		Dg.connect(6,2,9);
-	//		Dg.connect(6,5,10);
-	//		Dg.connect(6,4,11);
-	//		String nameF="fileToSave";
-	//		String nameF1="fileToSave1";
-	//		Ag.init(Dg);
-	//		Ag.save(nameF);
-	//
-	//		Graph_Algo Ag1 = new Graph_Algo();
-	//		Ag1.init(nameF1);
-	//		if( Ag.isConnected() != Ag1.isConnected())
-	//		{ 
-	//			fail(); 
-	//		}
-	//
-	//		if( Ag.shortestPath(1, 3)!= Ag1.shortestPath(1, 3))
-	//		{ 
-	//			fail(); 
-	//		}
-	//
-	//		if( Ag.getMyGraph().getEdge(6,4).getWeight() != Ag1.getMyGraph().getEdge(6,4).getWeight())
-	//		{ 
-	//			fail(); 
-	//		}
-	//		Boolean flag = Ag.getMyGraph().getEdge(1,2).getWeight() == Ag1.getMyGraph().getEdge(1,2).getWeight();
-	//		Boolean flag2 = Ag.isConnected() == Ag1.isConnected();
-	//		assertEquals(true,flag);
-	//		assertEquals(true,flag2);
-	//
-	//	}
-	//
+//
+//		@Test
+//		public void initFileTest() {
+//			Graph_Algo Ag = new Graph_Algo();
+//			DGraph Dg = new DGraph();
+//	
+//			Point3D p1 = new Point3D(2,5,7);
+//			Point3D p2 = new Point3D(3,6,8);
+//			NodeData n1 = new NodeData(1,p1,0);
+//			NodeData n2 = new NodeData(2,p1,0);
+//			NodeData n3 = new NodeData(3,p1,0);
+//			NodeData n4 = new NodeData(4,p2,0);
+//			NodeData n5 = new NodeData(5,p2,0);
+//			NodeData n6 = new NodeData(6,p2,0);
+//	
+//			Dg.addNode(n1);
+//			Dg.addNode(n2);
+//			Dg.addNode(n3);
+//			Dg.addNode(n4);
+//			Dg.addNode(n5);
+//			Dg.addNode(n6);
+//	
+//			Dg.connect(1,2,6);
+//			Dg.connect(1,3,7);
+//			Dg.connect(1,4,8);
+//			Dg.connect(6,2,9);
+//			Dg.connect(6,5,10);
+//			Dg.connect(6,4,11);
+//			String nameF="fileToSave";
+//			String nameF1="fileToSave1";
+//			Ag.init(Dg);
+//			Ag.save(nameF);
+//	
+//			Graph_Algo Ag1 = new Graph_Algo();
+//			Ag1.init(nameF1);
+//			if( Ag.isConnected() != Ag1.isConnected())
+//			{ 
+//				fail(); 
+//			}
+//	
+//			if( Ag.shortestPath(1, 3)!= Ag1.shortestPath(1, 3))
+//			{ 
+//				fail(); 
+//			}
+//	
+//			if( Ag.getMyGraph().getEdge(6,4).getWeight() != Ag1.getMyGraph().getEdge(6,4).getWeight())
+//			{ 
+//				fail(); 
+//			}
+//			Boolean flag = Ag.getMyGraph().getEdge(1,2).getWeight() == Ag1.getMyGraph().getEdge(1,2).getWeight();
+//			Boolean flag2 = Ag.isConnected() == Ag1.isConnected();
+//			assertEquals(true,flag);
+//			assertEquals(true,flag2);
+//	
+//		}
+	
 	//	@Test
 	//	public void save() {
 	//		Graph_Algo g = new Graph_Algo();
@@ -367,6 +368,7 @@ class AlgoGraphTest
 			Dg.connect(node33.getKey(), node22.getKey(), 1);
 			
 			Graph_Algo Ag = new Graph_Algo(Dg);
+			Ag.init(Dg);
 			System.out.println("Ag.shortestPathDist(5,3)" +Ag.shortestPathDist(5,3));
 			if (!Ag.shortestPath(5,3).isEmpty())
 			{fail();}

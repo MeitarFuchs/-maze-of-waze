@@ -42,8 +42,9 @@ public class Graph_Algo implements graph_algorithms, Serializable
 	private DGraph myGraph = new DGraph();
 
 
-	public Graph_Algo(graph _graph) {
-		this.myGraph=(DGraph) myGraph;
+	public Graph_Algo(graph _graph)
+	{
+		init(_graph);
 		}
 	
 	public Graph_Algo(DGraph dgraph) {
@@ -475,17 +476,14 @@ public class Graph_Algo implements graph_algorithms, Serializable
 	@Override
 	public List<node_data> TSP(List<Integer> targets) 
 	{
-		Graph_Algo GraphAlgo = new Graph_Algo(this.myGraph);
-		
-
 		LinkedList <node_data> listAns = new LinkedList<node_data>();
 		LinkedList <node_data> tempList = new LinkedList<node_data>();
 		initColor(0);
 
-		if (!this.isConnected()) 
+		if (!isConnected()) 
 		{
 			System.out.println("not connect");
-			return TSPnotConnect( myGraph,targets);
+			return TSPnotConnect( this.myGraph,targets);
 		}
 		if (targets.size()==1)
 		{
@@ -599,6 +597,7 @@ public class Graph_Algo implements graph_algorithms, Serializable
 		//			}
 		//		}
 		Graph_Algo graphAlgo =new Graph_Algo(GraphNotConnect);
+		
 		List<node_data> listNode= new LinkedList<node_data>();
 		listNode=null;
 		if (isConnected())
