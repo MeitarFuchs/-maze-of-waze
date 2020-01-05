@@ -47,7 +47,7 @@ public class GUI_JFRAME extends JFrame implements ActionListener, MouseListener
 		initGUI(graph);
 	}
 
-	
+
 
 	private void initGUI(graph graph) 
 	{
@@ -81,6 +81,31 @@ public class GUI_JFRAME extends JFrame implements ActionListener, MouseListener
 		graph_algo.add(item4);
 
 		this.addMouseListener(this);
+
+		Thread t=new Thread(new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				int curr_mc=0;
+				while (true){
+					synchronized(this)
+					{
+						if (Dg.getMC()!=curr_mc)
+						{
+							repaint();
+							curr_mc=Dg.getMC();
+							//stats_lbl.set
+						}
+					}
+				}
+			}
+		}
+				);
+		
+		t.start();
+		
+		
 	}
 
 	public void paint(Graphics dg)
@@ -160,7 +185,7 @@ public class GUI_JFRAME extends JFrame implements ActionListener, MouseListener
 		{
 			guiAlgoGraph=new Graph_Algo();
 			JFileChooser folder=new JFileChooser(FileSystemView.getFileSystemView());
-			
+
 			int userChoose = folder.showOpenDialog(null);
 			if(userChoose == JFileChooser.APPROVE_OPTION)
 			{
